@@ -6,6 +6,7 @@
 
 generator client {
   provider = "prisma-client-js"
+  output   = "../generated/prisma_client"
 }
 
 datasource db {
@@ -15,8 +16,8 @@ datasource db {
 
 // User
 model User {
-  id        String @id @default(auto()) @map("_id") @db.ObjectId
-  email     String @unique
+  id        String  @id @default(auto()) @map("_id") @db.ObjectId
+  email     String  @unique
   password  String
   firstName String
   lastName  String
@@ -45,7 +46,7 @@ model Dentist {
 
 // Appointments
 model Appointment {
-  id      String @id @default(auto()) @map("_id") @db.ObjectId
+  id      String   @id @default(auto()) @map("_id") @db.ObjectId
   status  String
   service String
   date    DateTime

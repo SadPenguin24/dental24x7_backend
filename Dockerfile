@@ -1,14 +1,11 @@
-FROM node:18
-WORKDIR /app
+FROM node:lts-alpine3.17
 
-COPY package*.json ./
+WORKDIR /usr/src/app
 
-RUN npm install
+COPY package.json package-lock.json ./
+
+RUN npm ci
 
 COPY . .
 
-RUN npx prisma generate
-RUN npm run build
-
-EXPOSE 8000
-CMD ["node", "dist/index.js" ]
+CMD ["sh", "-c", "npm run build && npm run start"]
