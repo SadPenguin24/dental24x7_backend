@@ -12,9 +12,10 @@ RUN npm install
 
 # Copy the rest of the application code
 COPY . .
+COPY /node_modules/prisma /app/node_modules/prisma
 
 # Expose the port that the app runs on
-EXPOSE 5003
+EXPOSE 8080
 
 # Define the command to run your application
-CMD ["node", "./src/index.ts"]
+CMD ["sh", "c", "npm run start"]
