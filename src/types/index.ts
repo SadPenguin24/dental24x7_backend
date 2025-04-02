@@ -37,3 +37,10 @@ export interface AuthRequest extends Request {
     userId: string;
   };
 }
+
+export enum StatusType {
+  "Booked",
+  "Cancelled",
+  "Rescheduled",
+  "Completed",
+}

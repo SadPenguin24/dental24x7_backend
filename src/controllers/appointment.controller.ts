@@ -25,6 +25,9 @@ export const createAppointment = async (req: AuthRequest, res: Response) => {
       data,
     });
 
+    //send email here
+    //send scheduled email here
+
     res.status(201).json({
       message: "Created Appointment Successfully",
       data: createdAppointment,
@@ -95,6 +98,8 @@ export const updateAppointmentById = async (
     if (!appointment) {
       return res.status(401).json({ message: "No Appointment was found" });
     }
+
+    //send email here
 
     res.status(200).json({
       message: "Appointment Cancelled Successfully",

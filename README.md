@@ -6,6 +6,7 @@ Dental 24x7 is a Node.js-based backend service that provides RESTful API endpoin
 
 - [Features]()
 - [Tech Stack]()
+- [Folder Structure]()
 - [Installation]()
 - [API Endpoints]()
 - [Database Schema]()
@@ -18,16 +19,29 @@ Dental 24x7 is a Node.js-based backend service that provides RESTful API endpoin
 - **User Authentication:** Patients can register, log in, and manage their profiles.
 - **Appointment Management:** Users can book, reschedule, or cancel appointments.
 - **Dentist Management:** View available dentists and their schedules.
-- **Admin Panel (Future Scope):** Manage users, appointments, and system settings.
 - **Rate Limiting:** Prevents API abuse.
 
 ## Tech Stack
 
 - **Backend:** Node.js, Express.js
 - **Database:** MongoDB
+- **ORM**: Prisma
 - **Authentication:** JSON Web Tokens (JWT)
-- **Validation:** Express Validator
 - **Security:** CORS, bcrypt.js
+
+## Folder Structure
+
+dental24x7_backend/
+├── src/
+│ ├── controllers/ # Route handlers
+│ ├── middleware/ # Custom middleware
+│ ├── routes/ # API routes
+│ ├── prisma/ # Prisma schema and client
+│ ├── utils/ # Helper functions
+│ ├── types/ # TypeScript types
+│ └── index.ts # Entry point
+├── package.json
+** └── tsconfig.json**
 
 ## Installation
 
@@ -49,6 +63,7 @@ To set up the backend locally, follow these steps:
 
    ```bash
    npm install
+   npx prisma generate
    ```
 
 4. **Set up environment variables:**
@@ -70,21 +85,25 @@ To set up the backend locally, follow these steps:
 
 ## API Endpoints
 
-| Method | Endpoint              | Description                 |
-| ------ | --------------------- | --------------------------- |
-| POST   | /api/auth/register    | Register a new user         |
-| POST   | /api/auth/login       | Log in and receive a JWT    |
-| GET    | /api/dentists         | Retrieve available dentists |
-| POST   | /api/appointments     | Book a new appointment      |
-| GET    | /api/appointments     | View user appointments      |
-| PUT    | /api/appointments/:id | Reschedule an appointment   |
-| DELETE | /api/appointments/:id | Cancel an appointment       |
+| Method | Endpoint                     | Description                                  |
+| ------ | ---------------------------- | -------------------------------------------- |
+| POST   | /api/auth/register           | Register a new user                          |
+| POST   | /api/auth/login              | Log in and receive a JWT                     |
+| GET    | /api/auth/profile            | Retrieve Profile by User Token               |
+| GET    | /api/dentists                | Retrieve available dentists                  |
+| GET    | /api/dentist/:id             | Retrieve a dentist via id                    |
+| POST   | /api/dentist/create          | Create a Dentist (Backend Only)              |
+| POST   | /api/appointments/create     | Book a new appointment                       |
+| Patch  | /api/appointments/update/:id | Update an appointment (Reschedule or Cancel) |
+| GET    | /api/appointments/:id        | Retrieve an Appointment                      |
 
 ## Database Schema
 
 - **Users Table:** Stores patient data.
 - **Dentists Table:** Contains information on available dentists.
-- **Appointments Table:** Tracks appointment details.
+- **Appointments Table:** Tracks appointment details of the user and dentist.
+
+![1743576389700](image/README/1743576389700.png)
 
 ## Error Handling
 
@@ -93,20 +112,11 @@ To set up the backend locally, follow these steps:
 
 ## Deployment
 
-Technologies used for deployment are Kubernetes, Docker, and AWS.
-
-I followed this video to learn more about Docker and AWS but I have no experience in Kubernetes but it is still interesting.
-
-Unfortunately I wasn't able to
+- **GitHub:** Git Version Control
+- **Render:** Deployment Platform
 
 ## Security Measures
 
 - **JWT Authentication:** Secure user sessions.
-- **Input Validation:** Prevents malicious data entries.
 - **Rate Limiting:** Protects API from excessive requests.
 - **CORS Policies:** Controls API access.
-
-### Future Enhancements:
-
-- **Admin Dashboard:** Manage appointments and users.
-- **Email/SMS Notifications:** Reminders for upcoming appointments.
