@@ -15,10 +15,8 @@ RUN npm run build
 
 # Install app dependencies
 COPY package*.json ./
-COPY /app/node_modules ./node_modules
-COPY /app/node_modules/.prisma ./node_modules/.prisma
 
 USER node
 
 EXPOSE 8080
-CMD [ "node", "dist/index.js" ]
+CMD [ "npm", "run", "start" ]
