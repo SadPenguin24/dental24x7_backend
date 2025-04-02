@@ -18,9 +18,6 @@ ENV NODE_ENV production
 COPY prisma ./prisma/
 COPY package*.json ./
 
-COPY --chown=node:node --from=builder /prisma /prisma
-COPY --chown=node:node --from=builder /src /src
-
 USER node
 
 EXPOSE 8080
