@@ -18,4 +18,4 @@ COPY /node_modules/.prisma /app/node_modules/.prisma
 EXPOSE 8080
 
 # Define the command to run your application
-CMD ["sh", "c", "npm run start"]
+CMD ["sh", "c", "npx prisma generate && npm run start"]
