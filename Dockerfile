@@ -1,22 +1,14 @@
-FROM node:18-alpine
+FROM node:16
+WORKDIR /app
 
-# Create app directory
-WORKDIR /usr/src/app
-
-# Install app dependencies
 COPY package*.json ./
 
 RUN npm install
-RUN npx prisma generate
 
 COPY . .
 
+RUN npx prisma generate
 RUN npm run build
 
-# Install app dependencies
-COPY package*.json ./
-
-USER node
-
-EXPOSE 8080
-CMD [ "npm", "run", "start" ]
+EXPOSE 8000
+CMD ["node", "dist/index.js" ]
