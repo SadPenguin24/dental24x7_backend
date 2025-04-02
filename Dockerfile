@@ -12,7 +12,7 @@ RUN npm install
 
 # Copy the rest of the application code
 COPY . .
-COPY /node_modules/prisma /app/node_modules/prisma
+COPY /node_modules/.prisma /app/node_modules/.prisma
 
 # Expose the port that the app runs on
 EXPOSE 8080
