@@ -1,24 +1,30 @@
-FROM node:18-alpine
+# Build image
+FROM node:18-alpine as builder
+WORKDIR /app
 
-# Create app directory
-WORKDIR /usr/src/app
+# Not sure if you will need this
+# RUN apk add --update openssl
 
-# Install app dependencies
 COPY package*.json ./
+RUN npm ci --quiet
 
-RUN npm install
-
-COPY . .
-
+COPY ./prisma prisma
+COPY ./src src
 RUN npm run build
 
+# Production image
+
+FROM node:18-alpine
+WORKDIR /app
 ENV NODE_ENV production
 
-# Install app dependencies
-COPY prisma ./prisma/
 COPY package*.json ./
+RUN npm ci --only=production --quiet
+
+COPY --chown=node:node --from=builder /app/prisma /app/prisma
+COPY --chown=node:node --from=builder /app/src /app/src
 
 USER node
 
 EXPOSE 8080
-CMD [ "node", "dist/index.js" ]
+CMD ["node", "src/index.js"]
