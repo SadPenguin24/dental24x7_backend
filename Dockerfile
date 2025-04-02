@@ -10,13 +10,18 @@ RUN npm install
 
 COPY . .
 
-RUN npx prisma generate
 RUN npm run build
 
 ENV NODE_ENV production
 
 # Install app dependencies
+COPY prisma ./prisma/
 COPY package*.json ./
+
+COPY --chown=node:node --from=builder /prisma /prisma
+COPY --chown=node:node --from=builder /src /src
+
+USER node
 
 EXPOSE 8080
 CMD [ "node", "dist/index.js" ]
