@@ -16,8 +16,8 @@ ENV NODE_ENV production
 
 # Install app dependencies
 COPY package*.json ./
-COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/node_modules/.prisma ./node_modules/.prisma
+COPY /app/node_modules ./node_modules
+COPY /app/node_modules/.prisma ./node_modules/.prisma
 
 USER node
 
