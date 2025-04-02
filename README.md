@@ -4,13 +4,14 @@ Dental 24x7 is a Node.js-based backend service that provides RESTful API endpoin
 
 ## Table of Contents
 
-- [Features](https://chatgpt.com/c/67ec38e3-e304-8003-a90b-be2dbbb47b51#features)
-- [Tech Stack](https://chatgpt.com/c/67ec38e3-e304-8003-a90b-be2dbbb47b51#tech-stack)
-- [Installation](https://chatgpt.com/c/67ec38e3-e304-8003-a90b-be2dbbb47b51#installation)
-- [API Endpoints](https://chatgpt.com/c/67ec38e3-e304-8003-a90b-be2dbbb47b51#api-endpoints)
-- [Database Schema](https://chatgpt.com/c/67ec38e3-e304-8003-a90b-be2dbbb47b51#database-schema)
-- [Error Handling](https://chatgpt.com/c/67ec38e3-e304-8003-a90b-be2dbbb47b51#error-handling)
-- [Security Measures](https://chatgpt.com/c/67ec38e3-e304-8003-a90b-be2dbbb47b51#security-measures)
+- [Features]()
+- [Tech Stack]()
+- [Installation]()
+- [API Endpoints]()
+- [Database Schema]()
+- [Error Handling]()
+- [Security Measures]()
+- [Deployment]()
 
 ## Features
 
@@ -89,6 +90,14 @@ To set up the backend locally, follow these steps:
 
 - Uses Express middleware to handle errors gracefully.
 - Returns standardized error messages and status codes.
+
+## Deployment
+
+Technologies used for deployment are Kubernetes, Docker, and AWS.
+
+I followed this video to learn more about Docker and AWS but I have no experience in Kubernetes but it is still interesting.
+
+Unfortunately I wasn't able to
 
 ## Security Measures
 
