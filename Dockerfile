@@ -7,10 +7,9 @@ COPY prisma .
 
 RUN npm install
 RUN npx prisma generate
-RUN npm run build
 
 COPY . .
 
 EXPOSE 8080
 
-CMD ["npm", "start"]
+CMD ["npm", "server"]
