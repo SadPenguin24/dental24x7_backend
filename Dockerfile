@@ -12,4 +12,4 @@ COPY . .
 
 EXPOSE 8080
 
-CMD ["sh","c","npx prisma generate && npx prisma db push && npm run start"]
+CMD ["node", "./dist/index.js"]
