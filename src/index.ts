@@ -20,8 +20,9 @@ app.use("/api/auth", authRoutes);
 app.use("/api/dentist", dentistRoutes);
 app.use("/api/appointment", appointmentRoutes);
 app.use("/api/user", userRoutes);
+
 app.use("/health-check", () => console.log("Congrats, I am working"));
 
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });
